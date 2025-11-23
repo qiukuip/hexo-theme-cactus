@@ -1,0 +1,14 @@
+<% if (config.symbols_count_time.symbols || config.symbols_count_time.time) { %>
+    <div class="article-category">
+        <i class="fa-solid fa-clock"></i>
+        <% if (config.symbols_count_time.symbols) { %>
+            <span class="word-count"><%- symbolsCount(page) %> words</span>
+        <% } %>
+        <% if (config.symbols_count_time.symbols && config.symbols_count_time.time) { %>
+            <span class="meta-divider">, </span>
+        <% } %>
+        <% if (config.symbols_count_time.time) { %>
+            <span class="time-to-read"><%- symbolsTime(page) %></span>
+        <% } %>
+    </div>
+<% } %>
