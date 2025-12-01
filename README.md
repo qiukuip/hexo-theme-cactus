@@ -10,7 +10,7 @@ A responsive, clean and simple [Hexo](http://hexo.io) theme for a personal websi
 
 
 
-## Modifications
+## Latest Modifications
 
 ### update on 2024-03-05
 
@@ -39,7 +39,7 @@ A responsive, clean and simple [Hexo](http://hexo.io) theme for a personal websi
 
 ### update on 2024-04-15
 
-1. 增加 RSS 订阅页面、
+1. 增加 RSS 订阅页面
 
 
 ### update on 2025-11-16
@@ -54,6 +54,17 @@ A responsive, clean and simple [Hexo](http://hexo.io) theme for a personal websi
 
 1. Add random sentence in index page.
 2. Add notifications in index page.
+
+
+### update on 2025-12-01
+
+1. 增加 nav、body 部分的字符间距
+2. 增加“开往”、深色模式切换按钮是否展示配置
+3. 文章详情页面增加字数统计、预估阅读时间
+4. bug 修复: nav 中隐藏深色模式切换按钮后首页空白问题
+5. bug 修复: 文章详情页面回到顶部后 nav 不展示
+
+---
 
 
 

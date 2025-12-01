@@ -26,12 +26,12 @@
       </li>
       <% for (var i in theme.nav) { %>
       <li>
-        <% if (theme.nav[i].indexOf("theme") < 0) { %>
-          <a href="<%- url_for(theme.nav[i]) %>"><%= __('nav.'+i).replace("nav.", "") %></a>
-        <% } else { %>
-          <button id="btn-theme-switch" aria-label="Toggle dark mode" style="background: none; border: none; cursor: pointer; margin-left: auto">
+        <% if (theme.nav[i].indexOf("theme") >= 0 && theme.show_theme_switch_button) { %>
+          <button id="btn-theme-switch" aria-label="Toggle dark mode" class="switch-theme-btn">
             <%= __('nav.'+i).replace("nav.", "") %>
           </button>
+        <% } else { %>
+          <a href="<%- url_for(theme.nav[i]) %>"><%= __('nav.'+i).replace("nav.", "") %></a>
         <% } %>
       </li>
       <% } %>

@@ -6,10 +6,10 @@ nav:
   tag: 标签
   category: 分类
   search: 搜索
-  travelling: 开往 🚇
+  travellings: 开往 🚇
   friends: 友链
   moments: 说说
-  domain_forsale: 域名出售
+  domain_forsale: 域名
 
 friends:
   link:

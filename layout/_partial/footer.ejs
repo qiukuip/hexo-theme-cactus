@@ -17,7 +17,7 @@
       <a href="<%= theme.travellings.url %>" target="_blank"><%= theme.travellings.description %></a>
     <% } %>
     <% if (theme.forever_blog.enabled) { %>
-      <% if (theme.travellings.enabled) { %>
+      <% if ((theme.moe_icp.enabled && theme.moe_icp.number) || theme.travellings.enabled) { %>
         <span> | </span>
       <% } %>
       <a href="<%= theme.forever_blog.url %>" target="_blank"><%= theme.forever_blog.description %></a>
@@ -27,7 +27,12 @@
     <nav>
       <ul>
         <% for (var i in theme.nav) { %>
-          <% if (theme.nav[i].indexOf("theme") < 0) { %>
+          <% if (theme.nav[i].indexOf("theme") >= 0) { %>
+            <!-- <button id="btn-theme-switch" aria-label="Toggle dark mode" class="switch-theme-btn">
+              <%= __('nav.'+i).replace("nav.", "") %>
+            </button> -->
+          <% } else if (theme.nav[i].indexOf("travellings") >= 0 && theme.show_travellings_except_nav) { %>
+          <% } else { %>
             <a href="<%- url_for(theme.nav[i]) %>"><%= __('nav.'+i).replace("nav.", "") %></a>
           <% } %>
         <% } %>

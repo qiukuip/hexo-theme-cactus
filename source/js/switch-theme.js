@@ -10,10 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 初始化检查主题模式设置是否过期，过期则清除
   initColorThemeStorage();
 
-
-  const toggleButton = document.getElementById('btn-theme-switch');
-  if (!toggleButton) return;
-
   // 检查 localStorage 中的用户偏好
   const userPref = localStorage.getItem('color-scheme');
   const systemPref = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -35,24 +31,27 @@ document.addEventListener('DOMContentLoaded', () => {
   setTheme(null, nextTheme);
   syncGiscusTheme(nextTheme); // 初始应该同步当前主题
 
-  // 切换按钮图标和行为
-  toggleButton.textContent = isDark ? '☀️' : '🌙';
-
-  toggleButton.addEventListener('click', () => {
-    // 点击时应该基于当前isDark状态获取主题，而不是直接读localStorage
-    const currentColorScheme = isDark ? 'dark' : 'white'; // 切换前的主题
-    const currentTheme = themes.find(t => t.name === currentColorScheme);
-    const nextColorScheme = isDark ? 'white' : 'dark'; // 切换后的主题
-    const nextTheme = themes.find(t => t.name === nextColorScheme);
-
-    isDark = !isDark;
+  const toggleButton = document.getElementById('btn-theme-switch');
+  if (toggleButton) {
+    // 切换按钮图标和行为
     toggleButton.textContent = isDark ? '☀️' : '🌙';
 
-    setTheme(currentTheme, nextTheme);
-    syncGiscusTheme(nextTheme);
-  });
+    toggleButton.addEventListener('click', () => {
+      // 点击时应该基于当前isDark状态获取主题，而不是直接读localStorage
+      const currentColorScheme = isDark ? 'dark' : 'white'; // 切换前的主题
+      const currentTheme = themes.find(t => t.name === currentColorScheme);
+      const nextColorScheme = isDark ? 'white' : 'dark'; // 切换后的主题
+      const nextTheme = themes.find(t => t.name === nextColorScheme);
 
+      isDark = !isDark;
+      toggleButton.textContent = isDark ? '☀️' : '🌙';
 
+      setTheme(currentTheme, nextTheme);
+      syncGiscusTheme(nextTheme);
+    });
+  }
+
+  
   window.addEventListener('message', (event) => {
     if (event.origin !== 'https://giscus.app') return;
     const colorScheme = localStorage.getItem('color-scheme');
