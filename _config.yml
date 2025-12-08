@@ -5,7 +5,7 @@
 # Link to a page that gives an overview of all your projects.
 # This can be an external link (e.g., to you GitHub profile) or to another
 # page within your website.
-projects_url: https ://github.com/lozhu20
+projects_url: https://github.com/qiukuip
 
 # Set the page direction to RTL or LTR. default is LTR. (if you set it 'rtl', the 'vazir' font will be loaded.)
 direction: ltr
@@ -23,8 +23,7 @@ nav:
   # search: /search/
   domain_forsale: https://domain-forsale.happy365.day
   about: /about/
-  # travelling: https://www.travellings.cn/go.html
-  ☀️: /theme/
+  travellings: https://www.travellings.cn/go.html
 
 # Links to your social media accounts.
 # The 'icon' keys should correspond to Fontawesome icon names
@@ -50,9 +49,6 @@ social_links:
   #   label: rss
   #   link: https://lozhu.happy365.day/atom.xml
 
-# Show dark mode switch button
-show_theme_switch_button: false
-
 # random sentence
 sentences:
   enabled: true
@@ -64,9 +60,9 @@ notifications:
 # friends link template config
 friends:
   link:
-    name: zhu's blog
-    icon: https://zhu.happy365.day/images/logo.png
-    url: https://zhu.happy365.day
+    name: 秋葵笔记
+    icon: https://qiukui-note.happy365.day/images/logo.png
+    url: https://qiukui-note.happy365.day
     desc: 一切皆是因为好玩～
 
 # ICP
@@ -220,7 +216,7 @@ disqus:
 # Fill in your Utterances data to enable Utterances comments
 utterances:
   enabled: false
-  repo: lozhu20/my-blog-comments
+  repo: qiukuip/my-blog-comments
   issue_term: pathname
   label: Comment
   theme: github-light
@@ -228,7 +224,7 @@ utterances:
 
 giscus:
   enabled: true
-  repo: "lozhu20/my-blog-comments"
+  repo: "qiukuip/my-blog-comments"
   repo_id: "R_kgDOLq3geg"
   category: "Announcements"
   category_id: "DIC_kwDOLq3ges4Cx0qi"
@@ -244,25 +240,29 @@ giscus:
 
 # Biadu site validate
 baidu_site_verification:
-  content:
+  content: codeva-JE0oy6Mgm5
 
 # msvalidate.01 - bing verification
 msvalidate_01:
-  content:
+  content: B9019CE3751A15D63E78AF8679980069
 
-# Fill in your Google Analytics tracking ID to enable Google Analytics.
+# google verification
+google_site_verification:
+  content: "-pj-pbBxEKPIn-qShW3vtG7Z4IaKVIZC-YE8RZ4FWTY"
+
+# Fill in your 1 Analytics tracking ID to enable Google Analytics.
 google_analytics:
-  enabled: false
-  id: G-XMGS491MQF
+  enabled: true
+  id: G-ZE5QX3XMRN
 
 la_analytics:
-  enabled: false
-  id: 3I0QIERSX42bDzDc
-  ck: 3I0QIERSX42bDzDc
+  enabled: true
+  id: 3OE5swegzc2LPrta
+  ck: 3OE5swegzc2LPrta
 
 # Fill in your Baidu Analytics tracking ID to enable Baidu Analytics.
 baidu_analytics:
-  enabled: false
+  enabled: true
   id: 8bdf047ae0a66729bd3b27e8bb56fe11
 
 # Fill in your Cloudflare Analytics tracking ID to enable Cloudflare Analytics.

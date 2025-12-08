@@ -7,49 +7,13 @@ const themes = [
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // 初始化检查主题模式设置是否过期，过期则清除
-  initColorThemeStorage();
-
-  // 检查 localStorage 中的用户偏好
-  const userPref = localStorage.getItem('color-scheme');
-  const systemPref = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-  let isDark = false;
-
-  if (userPref === 'dark') {
-    isDark = true;
-  } else if (userPref === 'white') {
-    isDark = false;
-  } else {
-    // 未设置时，跟随系统
-    isDark = systemPref;
-  }
+  let isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   const nextColorScheme = isDark ? 'dark' : 'white'; // 修复单引号错误
   const nextTheme = themes.find(t => t.name === nextColorScheme);
 
   setTheme(null, nextTheme);
   syncGiscusTheme(nextTheme); // 初始应该同步当前主题
-
-  const toggleButton = document.getElementById('btn-theme-switch');
-  if (toggleButton) {
-    // 切换按钮图标和行为
-    toggleButton.textContent = isDark ? '☀️' : '🌙';
-
-    toggleButton.addEventListener('click', () => {
-      // 点击时应该基于当前isDark状态获取主题，而不是直接读localStorage
-      const currentColorScheme = isDark ? 'dark' : 'white'; // 切换前的主题
-      const currentTheme = themes.find(t => t.name === currentColorScheme);
-      const nextColorScheme = isDark ? 'white' : 'dark'; // 切换后的主题
-      const nextTheme = themes.find(t => t.name === nextColorScheme);
-
-      isDark = !isDark;
-      toggleButton.textContent = isDark ? '☀️' : '🌙';
-
-      setTheme(currentTheme, nextTheme);
-      syncGiscusTheme(nextTheme);
-    });
-  }
 
   
   window.addEventListener('message', (event) => {
@@ -79,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.documentElement.classList.remove(currentTheme.className);
     }
     document.documentElement.classList.add(newTheme.className);
-    saveColorTheme(newTheme.name);
   }
 
   
@@ -114,25 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-
-  // 初始化处理：检查是否有过期的color-theme并清除
-  function initColorThemeStorage() {
-    const storedTheme = localStorage.getItem('color-scheme');
-    const expiryTime = localStorage.getItem('color-scheme-expiry');
-
-    // 如果存在存储且已过期，清除它
-    if (storedTheme && expiryTime && Date.now() > Number(expiryTime)) {
-      localStorage.removeItem('color-scheme');
-      localStorage.removeItem('color-scheme-expiry');
-    }
-  }
-
-  // 保存color-theme时同时设置30分钟过期时间
-  function saveColorTheme(theme) {
-    const expiry = Date.now() + 30 * 60 * 1000; // 30分钟后过期
-    localStorage.setItem('color-scheme', theme);
-    localStorage.setItem('color-scheme-expiry', expiry.toString());
-  }
 
   // 避免页面加载时的白屏问题
   document.body.style.visibility = 'visible';
