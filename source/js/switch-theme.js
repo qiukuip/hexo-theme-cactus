@@ -66,8 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
       giscusFrame.contentWindow.postMessage({
         giscus: {
           setConfig: {
-            defaultCommentOrder: "newest",
-            theme: theme.name === 'white' ? 'light' : 'dark' // 使用主题对象的name属性
+            theme: theme.name === 'white' ? 'light' : 'dark'
           }
         }
       }, frameOrigin);

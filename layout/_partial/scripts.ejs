@@ -158,6 +158,7 @@
     var theme_lang = '<%= theme.lang %>';
     var giscus_loading = '<%= theme.giscus.loading %>';
     var giscus_crossorigin = '<%= theme.giscus.crossorigin %>';
+    var giscus_default_comment_order = '<%= theme.giscus.default_comment_order %>';
 
     (function(){
         var script = document.createElement('script');
@@ -176,6 +177,7 @@
         script.setAttribute('data-lang', theme_lang);
         script.setAttribute('data-loading', giscus_loading);
         script.setAttribute('crossorigin', giscus_crossorigin);
+        script.setAttribute('data-default-comment-order', giscus_default_comment_order);
         script.async = true;
         (document.getElementById('giscus_thread')).appendChild(script);
     }());

@@ -12,9 +12,10 @@
           <span><%= __('index.excerpt_from') %> <%= site.data.sentences[sentence].excerptFrom %></span><br />
         <% } %>
         <% if (site.data.sentences[sentence].author) { %>
-          <span><%= site.data.sentences[sentence].author %></span><br />
+          <span><%= site.data.sentences[sentence].author %></span>
+          <!--<br />-->
         <% } %>
-        <span><%= __('index.sentence_copyright') %></span>
+        <!--<span><%= __('index.sentence_copyright') %></span>-->
       </div>
     <% } %>
   <% } %>
