@@ -96,7 +96,7 @@ tags_overview: false
 #   - sort_updated: sort posts by last modification date instead of creation date.
 posts_overview:
   show_all_posts: false
-  post_count: 10
+  post_count: 6
   sort_updated: false
 
 # Customize the archive view.
@@ -223,7 +223,7 @@ utterances:
   # theme: github-dark
 
 giscus:
-  enabled: true
+  enabled: false
   repo: "qiukuip/my-blog-comments"
   repo_id: "R_kgDOLq3geg"
   category: "Announcements"
@@ -238,6 +238,37 @@ giscus:
   loading: "lazy"
   crossorigin: "anonymous"
   default_comment_order: "newest"
+
+waline:
+  enabled: true
+  server_url: https://waline-comments.happy365.day
+  # lang: "zh-CN"
+  dark: html.theme--dark
+  avatar: "mm"
+  meta:
+    - nick
+    - mail
+    - link
+  required_meta:
+    - nick
+  word_limit: 400
+  page_size: 15
+  reaction:
+    - https://unpkg.com/@waline/emojis@1.4.0/qq/qq_heart.gif
+    - https://unpkg.com/@waline/emojis@1.4.0/qq/qq_bear2.gif
+    - https://unpkg.com/@waline/emojis@1.4.0/qq/qq_tada.gif
+    - https://unpkg.com/@waline/emojis@1.4.0/qq/qq_rose.gif
+    - https://unpkg.com/@waline/emojis@1.4.0/qq/qq_coffee.gif
+  emoji: 
+    - //unpkg.com/@waline/emojis@1.4.0/weibo
+    - //unpkg.com/@waline/emojis@1.4.0/qq
+    - //unpkg.com/@waline/emojis@1.4.0/tw-emoji
+    - //unpkg.com/@waline/emojis@1.4.0/tw-symbol
+    - //unpkg.com/@waline/emojis@1.4.0/tieba
+    - //unpkg.com/@waline/emojis@1.4.0/bilibili
+    - //unpkg.com/@waline/emojis@1.4.0/soul-emoji
+  no_copyright: true
+  no_rss: true
 
 # Biadu site validate
 baidu_site_verification:
@@ -293,6 +324,9 @@ cdn:
   font_awesome: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css
   justified_gallery_css: https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css
   justified_gallery_js: https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js
+  waline_js: https://cdn.jsdelivr.net/npm/@waline/client@latest/dist/waline.js
+  waline_css: https://cdn.jsdelivr.net/npm/@waline/client@latest/dist/waline.css
+  waline_meta_css: https://cdn.jsdelivr.net/npm/@waline/client@latest/dist/waline-meta.css
 
 stylus:
   include:

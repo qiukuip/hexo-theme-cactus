@@ -9,30 +9,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-  const nextColorScheme = isDark ? 'dark' : 'white'; // 修复单引号错误
+  // const themeNames = themes.map(t => t.name);
+  const nextColorScheme = isDark ? 'dark' : 'white';
+  // const nextColorScheme = isDark ? 'dark' : themeNames.slice(1)[Math.floor(Math.random() * (themeNames.length - 1))];
   const nextTheme = themes.find(t => t.name === nextColorScheme);
 
   setTheme(null, nextTheme);
-  syncGiscusTheme(nextTheme); // 初始应该同步当前主题
+  // syncGiscusTheme(nextTheme); // 初始应该同步当前主题
 
   
-  window.addEventListener('message', (event) => {
-    if (event.origin !== 'https://giscus.app') return;
-    const colorScheme = localStorage.getItem('color-scheme');
-    const theme = themes.find(t => t.name === colorScheme);
-    syncGiscusTheme(theme);
-  });
+  // window.addEventListener('message', (event) => {
+  //   if (event.origin !== 'https://giscus.app') return;
+  //   const colorScheme = localStorage.getItem('color-scheme');
+  //   const theme = themes.find(t => t.name === colorScheme);
+  //   syncGiscusTheme(theme);
+  // });
 
-  const html = document.documentElement;
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      if (mutation.attributeName === 'class') {
-        const isDark = html.classList.contains('theme--dark'); // 用主题类名判断更准确
-        syncGiscusTheme(isDark ? themes[0] : themes[1]);
-      }
-    });
-  });
-  observer.observe(html, { attributes: true });
+  // const html = document.documentElement;
+  // const observer = new MutationObserver((mutations) => {
+  //   mutations.forEach((mutation) => {
+  //     if (mutation.attributeName === 'class') {
+  //       const isDark = html.classList.contains('theme--dark');
+  //       syncGiscusTheme(isDark ? themes[0] : themes[1]);
+  //     }
+  //   });
+  // });
+  // observer.observe(html, { attributes: true });
 
 
   // 设置主题色
@@ -47,34 +49,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
   // 设置评论区主题色
-  function syncGiscusTheme(theme) {
-    if (!theme) return;
-    const giscusFrame = document.querySelector('iframe.giscus-frame');
-    if (!giscusFrame) {
-      if (window.giscusRetryCount === undefined) window.giscusRetryCount = 0;
-      if (window.giscusRetryCount < 10) {
-        window.giscusRetryCount++;
-        setTimeout(() => syncGiscusTheme(theme), 100); // 这里传theme对象
-      }
-      return;
-    }
+  // function syncGiscusTheme(theme) {
+  //   if (!theme) return;
+  //   const giscusFrame = document.querySelector('iframe.giscus-frame');
+  //   if (!giscusFrame) {
+  //     if (window.giscusRetryCount === undefined) window.giscusRetryCount = 0;
+  //     if (window.giscusRetryCount < 10) {
+  //       window.giscusRetryCount++;
+  //       setTimeout(() => syncGiscusTheme(theme), 100);
+  //     }
+  //     return;
+  //   }
 
-    if (giscusFrame.contentWindow) {
-      // 从 iframe 的 src 中提取正确的 origin（避免跨域错误）
-      const frameOrigin = new URL(giscusFrame.src).origin;
+  //   if (giscusFrame.contentWindow) {
+  //     // 从 iframe 的 src 中提取正确的 origin（避免跨域错误）
+  //     const frameOrigin = new URL(giscusFrame.src).origin;
 
-      giscusFrame.contentWindow.postMessage({
-        giscus: {
-          setConfig: {
-            theme: theme.name === 'white' ? 'light' : 'dark'
-          }
-        }
-      }, frameOrigin);
-    } else {
-      // 延迟重试
-      setTimeout(() => syncGiscusTheme(themeName), 100);
-    }
-  }
+  //     giscusFrame.contentWindow.postMessage({
+  //       giscus: {
+  //         setConfig: {
+  //           theme: theme.name === 'white' ? 'light' : 'dark'
+  //         }
+  //       }
+  //     }, frameOrigin);
+  //   } else {
+  //     // 延迟重试
+  //     setTimeout(() => syncGiscusTheme(themeName), 100);
+  //   }
+  // }
 
 
   // 避免页面加载时的白屏问题

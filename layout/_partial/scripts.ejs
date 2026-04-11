@@ -183,6 +183,43 @@
     }());
   </script>
 <% } %>
+<!-- Waline Comments -->
+<% if (page.comments && theme.waline.enabled && theme.waline.server_url) { %>
+  <script type="module">
+    var waline_server_url = '<%= theme.waline.server_url %>';
+    var waline_path = '<%= page.path %>';
+    // var waline_lang = '<%= theme.waline.lang %>';
+    var waline_avatar = '<%= theme.waline.avatar %>';
+    var waline_meta = '<%- theme.waline.meta %>';
+    var waline_required_meta = '<%- theme.waline.required_meta %>';
+    var waline_word_limit = '<%= theme.waline.word_limit %>';
+    var waline_page_size = '<%= theme.waline.page_size %>';
+    var waline_reaction = '<%- theme.waline.reaction %>';
+    var waline_dark = '<%- theme.waline.dark %>';
+    var waline_no_copyright = '<%= theme.waline.no_copyright %>';
+    var waline_no_rss = '<%= theme.waline.no_rss %>';
+    var waline_emoji = '<%- theme.waline.emoji %>';
+    
+    import { init } from 'https://cdn.jsdelivr.net/npm/@waline/client@latest/dist/waline.min.js';
+
+    init({
+      el: '#waline_thread',
+      serverURL: waline_server_url,
+      path: waline_path,
+      meta: waline_meta.split(','),
+      requiredMeta: waline_required_meta.split(','),
+      // lang: waline_lang,
+      avatar: waline_avatar,
+      wordLimit: waline_word_limit,
+      pageSize: waline_page_size,
+      reaction: waline_reaction.split(','),
+      dark: waline_dark,
+      noCopyright: waline_no_copyright,
+      noRss: waline_no_rss,
+      emoji: waline_emoji.split(',')
+    });
+  </script>
+<% } %>
 
 <!-- image modal -->
 <script>
