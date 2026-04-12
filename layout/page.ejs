@@ -96,6 +96,8 @@
               <% } %>
             </div>
           </div>
+        <% } else if (page.type === 'messages') { %>
+          <%- partial('_partial/comments') %>
         <% } else { %>
           <%- page.content %>
         <% } %>

@@ -10,6 +10,7 @@ nav:
   friends: Friends
   moments: Moments
   domain_forsale: Domains
+  messages: Messages
 
 friends:
   link:
